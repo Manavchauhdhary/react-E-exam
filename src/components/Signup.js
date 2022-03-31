@@ -16,7 +16,8 @@ export const Signup = () => {
      const [DOB, setDOB] = useState("")
      const [education, seteducation] = useState("")
      const [address, setaddress] = useState("")
-     const [role, setrole] = useState([])
+     const [role, setrole] = useState("")
+     const [roleAdd, setroleAdd] = useState([])
 
      let navigate = useNavigate ()
      
@@ -46,7 +47,7 @@ export const Signup = () => {
      const getrole = async () => {
        await axios.get('http://localhost:3000/roles').then((res)=>
        {
-         setrole(res.data.data)
+         setroleAdd(res.data.data)
          console.log(res.data.data)
        })
      }
@@ -66,7 +67,7 @@ export const Signup = () => {
         <div className="card card-registration my-4">
           <div className="row g-0">
             <div className="col-xl-6 d-none d-xl-block">
-              <img src="img/signup-image.png" alt="" className="img-fluid" style={{borderTopLeftRadius: '.25rem', borderBottomLeftRadius: '.25rem'}} />
+              <img src="" alt="" className="img-fluid" style={{borderTopLeftRadius: '.25rem', borderBottomLeftRadius: '.25rem'}} />
             </div>
             <div className="col-xl-6">
               <div className="card-body p-md-5 text-black">
@@ -101,7 +102,7 @@ export const Signup = () => {
                     <select className="select  form-control-lg" onChange={(e) => setrole(e.target.value)} >
                     <option value="">Select Role</option>
                     {
-                      role.map(roles =>{
+                      roleAdd.map(roles =>{
 
                         return(
                           <option value={roles._id}>{roles.roleName}</option>)
@@ -139,7 +140,7 @@ export const Signup = () => {
                 </div>
                
                 <div className="form-outline mb-4">
-                  <input type="text" id="form3Example9" className="form-control form-control-lg" onChange={(e) => setDOB(e.target.value)}/>
+                  <input type="date" id="form3Example9" className="form-control form-control-lg" onChange={(e) => setDOB(e.target.value)}/>
                   <label className="form-label" htmlFor="form3Example9">DOB</label>
                 </div>
                 <div className="form-outline mb-4">
@@ -149,13 +150,13 @@ export const Signup = () => {
                   
                 </div>
                 <div className="form-outline mb-4">
-                  <input type="text" id="form3Example90"  className="form-control form-control-lg" onChange={(e) => setpassword(e.target.value)} />
+                  <input type="password" id="form3Example90"  className="form-control form-control-lg" onChange={(e) => setpassword(e.target.value)} />
                   <label className="form-label" htmlFor="form3Example90">Password</label>
                  
                   
                 </div>
                 <div className="form-outline mb-4">
-                  <input type="text" id="form3Example90" className="form-control form-control-lg" onChange={(e) => setrepassword(e.target.value)} />
+                  <input type="password" id="form3Example90" className="form-control form-control-lg" onChange={(e) => setrepassword(e.target.value)} />
                   <label className="form-label" htmlFor="form3Example90">re-password</label>
                   
                 </div>

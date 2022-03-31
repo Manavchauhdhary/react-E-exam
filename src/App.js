@@ -18,12 +18,13 @@ import { Logout } from './components/Logout';
 import { createContext } from 'react';
 import { initialState,reducer } from './reducer/UseReducer';
 import { useReducer } from 'react';
+import { ExamsOfCourse } from './components/ExamsOfCourse';
 
 
- export const UserContext = createContext()
+  export const UserContext = createContext()
 function App() {
     
-    const [state, dispatch] = useReducer(reducer, initialState)
+   const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     
@@ -49,10 +50,12 @@ function App() {
          <Route path='/Course' element={<Course/>}/>
          <Route path='/exams/:examId' element={<UpdateExam/>}/>
          <Route path='/Logout' element={<Logout/>}/>
+         <Route path='/Update' element={<UpdateExam/>}/>
+         <Route path='/course/:courseId/exams' element={<ExamsOfCourse/>}/>
          
 
        </Routes>
-       </UserContext.Provider>
+        </UserContext.Provider> 
        <Footer/>
     </>
   );

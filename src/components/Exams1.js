@@ -7,12 +7,16 @@ import { Search } from './Search'
 
 export const Exams1 = () => {
   const [exams, setexams] = useState([])
+  
+
+
   const getExam = () => {
     axios.get("http://localhost:3000/Exams").then(res => {
       console.log(res.data.data)
       setexams(res.data.data)
     }).catch(err => {
       console.log(err)
+      
     })
   }
 
@@ -25,6 +29,7 @@ export const Exams1 = () => {
         console.log(res.data.data)
     }).catch(err=>{
         console.log(err)
+        
     })
 }
 
@@ -42,7 +47,7 @@ export const Exams1 = () => {
             <p>Select the particuler course exam and give the exam and evaluate your self .</p>
           </div>
         </div>
-        <div className="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+        {/* <div className="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
           <ul className="nav nav-pills d-inline-flex justify-content-end mb-5">
             <li className="nav-item me-2">
               <a className="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Featured</a>
@@ -54,7 +59,7 @@ export const Exams1 = () => {
               <a className="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">For Rent</a>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
       <div className="tab-content">
         <div id="tab-1" className="tab-pane fade show p-0 active">

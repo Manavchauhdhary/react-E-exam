@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 export const UpdateExam = () => {   
@@ -11,10 +11,13 @@ export const UpdateExam = () => {
      const [examname, setexamname] = useState('')
      const [totalque, settotalque] = useState('')
      const [status, setstatus] = useState("")
-     const [Course, setCourse] = useState([])
+     const [Course, setCourse] = useState('')
+     const [Courselist, setCourselist] = useState([])
+
+     var navigate = useNavigate()
 
      const getExams = () =>{
-      axios.get('http://localhost:3000/exams').then(res => {
+      axios.get(`http://localhost:3000/exams/${examId}`).then(res => {
         console.log(res.data.data)
         setexam(res.data.data)
       }).catch(err => {
@@ -29,7 +32,7 @@ export const UpdateExam = () => {
     const getcourse = async () => {
       await axios.get('http://localhost:3000/courses').then(res=> {
         console.log(res.data.data)
-        setCourse(res.data.data)
+        setCourselist(res.data.data)
       })
 
     }
@@ -47,9 +50,10 @@ export const UpdateExam = () => {
        isActive: status,
        course: Course,
       }
-      axios.post(`http://localhost:3000/exams/${examId,data}`, data).then((res) => {
+      axios.put(`http://localhost:3000/exams/${examId}`, data).then((res) => {
      alert("data add sucssesfully");
      console.log(res.data.data);
+     navigate('/Exams')
    }).catch(err=>{
      console.log(err)
    })
@@ -72,14 +76,14 @@ export const UpdateExam = () => {
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-user fa-lg me-3 fa-fw" />
                     <div className="form-outline flex-fill mb-0">
-                      <input type="text" id="form3Example1c" className="form-control" defaultChecked={exam.examName} onChange={(e) => setexamname(e.target.value)}/>
+                      <input type="text" id="form3Example1c" className="form-control" defaultValue={exam.examName} onChange={(e) => setexamname(e.target.value)}/>
                       <label className="form-label" htmlFor="form3Example1c">Exam Name</label>
                     </div>
                   </div>
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-envelope fa-lg me-3 fa-fw" />
                     <div className="form-outline flex-fill mb-0">
-                      <input type="number" id="form3Example3c" className="form-control" defaultChecked={exam.totalQuestion} onChange={(e) => settotalque(e.target.value)} />
+                      <input type="number" id="form3Example3c" className="form-control" defaultValue={exam.totalQuestion} onChange={(e) => settotalque(e.target.value)} />
                       <label className="form-label" htmlFor="form3Example3c">Total Question</label>
                     </div>
                   </div>
@@ -106,14 +110,14 @@ export const UpdateExam = () => {
                     <div className="col-md-8 mb-8">
                      <div className="form-outline">
                       <div className="col-md-6 mb-6">
-                        <select className="select  form-control-lg" defaultChecked={exam.course} onChange={(e) => setCourse(e.target.value)} >
+                        <select className="select  form-control-lg" defaultValue={exam.course} onChange={(e) => setCourse(e.target.value)} >
                         <option value='#'>Select Course</option>
                           {
-                            Course.map((course =>{
+                            Courselist.map((course) =>{
                               return(
                                 <option value={course._id}>{course.courseName}</option>
                               )
-                            }))
+                            })
                           }
                         
                         
