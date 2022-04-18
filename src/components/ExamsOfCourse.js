@@ -79,7 +79,7 @@ export const ExamsOfCourse = () => {
                                                 <div className="position-relative overflow-hidden">
                                                     <Link to={`/exam/${exam._id}`}><img className="img-fluid" src='img/exam_image.jpg' alt="" /></Link>
                                                     <div className="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Rent</div>
-                                                    <div className="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Shop</div>
+                                                    {/* <div className="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Shop</div> */}
                                                 </div>
                                                 <div className="p-4 pb-0">
                                                     {/* <h5 className="text-primary mb-3">{exam.subject.subjectName}</h5> */}
@@ -87,7 +87,7 @@ export const ExamsOfCourse = () => {
                                                     <p><i className="" />{exam.totalQuestion} Total Question</p>
                                                 </div>
                                                 <div className="d-flex border-top">
-                                                   <small className="flex-fill text-center border-end py-2"><i className="fas fa-badge-check" />{exam.course.courseName} </small>
+                                                   {/* <small className="flex-fill text-center border-end py-2"><i className="fas fa-badge-check" />{exam.course.courseName} </small> */}
                                                    <small className="flex-fill text-center border-end py-2"><i className="fa fa-pencil-square-o"/><Link to={`/exams/${exam._id}`}>Update exam</Link></small>
                                                    <small className="flex-fill text-center py-2"><i className="fas fa-cut" /><Link to='/Exams' onClick={(e)=>{deleteExam(exam._id)}}>Delete Exam</Link></small>
                                                     <ToastContainer

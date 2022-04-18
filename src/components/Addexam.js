@@ -11,6 +11,10 @@ export const Addexam = () => {
    const [status, setstatus] = useState("")
    const [subject, setsubject] = useState('')
    const [Course, setCourse] = useState([])
+   const [author, setAuthor] = useState(localStorage.getItem('userId'))
+
+   var navigate = useNavigate()
+  var auth = localStorage.getItem('email')
 
    var navigate = useNavigate()
 
@@ -35,6 +39,7 @@ export const Addexam = () => {
      totalQuestion: totalque,
      isActive: status,
      course: subject,
+     author:author
     }
     axios.post("http://localhost:3000/exams", data).then((res) => {
   //  alert("data add sucssesfully");
@@ -42,6 +47,14 @@ export const Addexam = () => {
    navigate('/Exams')
  });
   }
+
+  useEffect(() => {
+    {
+        if (!auth) {
+            navigate('/login')
+        }
+    }
+  }, [])
 
    
 

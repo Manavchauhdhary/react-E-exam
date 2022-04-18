@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export const Signup = () => {
      const [FirstName, setFirstName] = useState("")
      const [LastName, setLastName] = useState("")
-     const [UserName, setUserName] = useState("")
+    //  const [UserName, setUserName] = useState("")
      const [password, setpassword] = useState("")
      const [repassword, setrepassword] = useState("")
      const [email, setemail] = useState("")
@@ -32,7 +32,7 @@ export const Signup = () => {
         firstName: FirstName,
         gender: gender,
         lastName: LastName,
-        userName: UserName,
+        // userName: UserName,
         mobileNo: mobileNumber,
         password: password,
         role: role,
@@ -90,12 +90,12 @@ export const Signup = () => {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-md-6 mb-4">
+                  {/* <div className="col-md-6 mb-4">
                     <div className="form-outline">
                       <input type="text" id="form3Example1m1" className="form-control form-control-lg" onChange={ (e) => setUserName(e.target.value)} />
                       <label className="form-label" htmlFor="form3Example1m1">Username</label>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col-md-6 mb-6">
                     <div className="form-outline">
                     <div className="col-md-6 mb-6">

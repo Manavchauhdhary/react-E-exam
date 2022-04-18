@@ -8,6 +8,9 @@ export const ExamList1 = () => {
     
   const [Course, setCourse] = useState([])
 
+  
+
+
   const getCourse = () => {
     axios.get("http://localhost:3000/Courses").then(res => {
       console.log(res.data.data)
@@ -20,6 +23,9 @@ export const ExamList1 = () => {
   useEffect(() => {
     getCourse();
   },[])
+
+  
+
   return (
     <div>
         {/* Category Start */}

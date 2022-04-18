@@ -2,11 +2,15 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 export const Course = () => {
     const [courseName, setcourseName] = useState("")
     const [status, setstatus] = useState('')
     const [discription, setdiscription] = useState('')
+
+    var navigate = useNavigate()
+  var auth = localStorage.getItem('email')
 
     var navigate = useNavigate()
 
@@ -25,6 +29,15 @@ export const Course = () => {
    navigate('/Examlist')
  });
 }
+
+useEffect(() => {
+  {
+      if (!auth) {
+          navigate('/login')
+      }
+  }
+}, [])
+
   return (
     <div>
           <section className="vh-100" style={{backgroundColor: '#eee'}}>

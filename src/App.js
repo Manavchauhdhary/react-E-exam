@@ -19,6 +19,10 @@ import { createContext } from 'react';
 import { initialState,reducer } from './reducer/UseReducer';
 import { useReducer } from 'react';
 import { ExamsOfCourse } from './components/ExamsOfCourse';
+import { Questions } from './components/Questions';
+import { ResetPassword } from './components/ResetPassword';
+import { ResetPasswordButton } from './components/ResetPasswordButton';
+import { UserProfile } from './components/UserProfile';
 
 
   export const UserContext = createContext()
@@ -29,8 +33,11 @@ function App() {
   return (
     
     <>
-    <UserContext.Provider value={{state, dispatch}}>
+    {/* <UserContext.Provider value={{state, dispatch}}> */}
       <Navbar/>
+      {/* <Questions/> */}
+      
+     
       
      
     
@@ -49,14 +56,17 @@ function App() {
          <Route path='/Addexam' element={<Addexam/>}/>
          <Route path='/Course' element={<Course/>}/>
          <Route path='/exams/:examId' element={<UpdateExam/>}/>
-         <Route path='/Logout' element={<Logout/>}/>
+         <Route path='/ResetPasswordButton' element={<ResetPasswordButton/>}/>
+         <Route path='/reset/:token' element={<ResetPassword/>}/>
+         <Route path='/profile/:userId' element={<UserProfile/>}/>
+         
          <Route path='/Update' element={<UpdateExam/>}/>
          <Route path='/course/:courseId/exams' element={<ExamsOfCourse/>}/>
          
 
        </Routes>
-        </UserContext.Provider> 
-       <Footer/>
+        {/* </UserContext.Provider>  */}
+        <Footer/>
     </>
   );
 }

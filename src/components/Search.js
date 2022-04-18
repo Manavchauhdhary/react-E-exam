@@ -1,6 +1,13 @@
 import React from 'react'
+import { useState } from 'react'
 
 export const Search = () => {
+    const [addcourse, setaddcourse] = useState([])
+    const [addexam, setaddexam] = useState([])
+
+    
+
+
   return (
     <div>
         {/* Search Start */}
@@ -13,19 +20,29 @@ export const Search = () => {
               <input type="text" className="form-control border-0 py-3" placeholder="Search Keyword" />
             </div>
             <div className="col-md-4">
-              <select className="form-select border-0 py-3">
+              <select className="form-select border-0 py-3" onChange={(e) => setaddcourse(e.target.value)}>
                 <option selected>Property Type</option>
-                <option value={1}>Property Type 1</option>
-                <option value={2}>Property Type 2</option>
-                <option value={3}>Property Type 3</option>
+                {
+                            addcourse.map((course) =>{
+                              return(
+                                <option value={course._id}>{course.courseName}</option>
+                              )
+                            })
+                }
               </select>
             </div>
             <div className="col-md-4">
-              <select className="form-select border-0 py-3">
+              <select className="form-select border-0 py-3" onChange={(e) => setaddexam(e.target.value)}>
                 <option selected>Location</option>
-                <option value={1}>Location 1</option>
-                <option value={2}>Location 2</option>
-                <option value={3}>Location 3</option>
+                  {
+                    addexam.map((exams) => {
+                      return(
+                        <option value={exams._id}>{exams.examName}</option>
+                      )
+                    })
+                  }
+                
+                
               </select>
             </div>
           </div>

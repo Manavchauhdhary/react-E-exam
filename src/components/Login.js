@@ -5,6 +5,8 @@ import '../Login.css'
 import { useState } from 'react'
 import { UserContext } from '../App'
 import { useContext } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Login = () => {
 
@@ -13,6 +15,7 @@ export const Login = () => {
 
    const [email, setemail] = useState('')
    const [password, setpassword] = useState('')
+   
 
    var navigate = useNavigate()
 
@@ -21,17 +24,41 @@ export const Login = () => {
 
      var data = {
        email:email,
-       password:password
+       password:password,
+       
      }
      await axios.post("http://localhost:3000/login",data).then(res =>{
        console.log(res.data)
 
        if(res.data.status == 200){
          localStorage.setItem("email",res.data.data.email)
-         localStorage.setItem("role",res.data.data.role)
+         localStorage.setItem("role",res.data.data.role.roleName)
+         localStorage.setItem('userId',res.data.data._id)
+         localStorage.setItem('firstName',res.data.data.firstName)
+         
+         toast.success(res.data.msg, {
+					position: "bottom-right",
+					autoClose: 1000,
+					hideProgressBar: true,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: 0,
+        });
          navigate('/')
+        
        }
        else {
+        toast.error(res.data.msg, {
+					position: "bottom-right",
+					autoClose: 1000,
+					hideProgressBar: true,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: 0,
+				});
+
         //  dispatch({type:'user' ,payload:true})
          navigate('/login')
        }
@@ -85,13 +112,27 @@ export const Login = () => {
                 Remember me
               </label>
             </div>
-            <a href="#!" className="text-body">Forgot password?</a>
+            <Link to={"/ResetPasswordButton"} className="text-body">Forgot password?</Link>
           </div>
           <div className="text-center text-lg-start mt-4 pt-2">
             <button type="submit" className="btn btn-primary btn-lg" style={{paddingLeft: '2.5rem', paddingRight: '2.5rem'}}>Login</button>
             <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to="/Signup" className="link-danger">Register</Link></p>
           </div>
+          <ToastContainer
+								position="bottom-right"
+								autoClose={1000}
+								hideProgressBar
+								newestOnTop={false}
+								closeOnClick
+								rtl={false}
+								pauseOnFocusLoss
+								draggable
+								pauseOnHover
+							/>
+          
         </form>
+      
+
       </div>
     </div>
   </div>

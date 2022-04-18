@@ -14,7 +14,8 @@ export const Headerexamlist = () => {
             <li className="breadcrumb-item"><a href="#">Home</a></li>
             <li className="breadcrumb-item"><a href="#">Pages</a></li>
             <li className="breadcrumb-item text-body active" aria-current="page">CourseList</li>
-            <li className="breadcrumb-item text-body active" aria-current="page"><Link to ="/Course" className="btn btn-primary px-2 mx-2 d-none d-lg-flex">Add Course</Link></li>
+            {localStorage.getItem('role') ==='admin' || localStorage.getItem('role') === 'faculty'?
+            <li className="breadcrumb-item text-body active" aria-current="page"><Link to ="/Course" className="btn btn-primary px-2 mx-2 d-none d-lg-flex">Add Course</Link></li>:""}
           </ol>
         </nav>
       </div>

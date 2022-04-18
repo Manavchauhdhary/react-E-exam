@@ -15,7 +15,8 @@ export const Headerexams = () => {
             <li className="breadcrumb-item"><a href="#">Home</a></li>
             <li className="breadcrumb-item"><a href="#">Pages</a></li>
             <li className="breadcrumb-item text-body active" aria-current="page">Exams</li>
-            <li className="breadcrumb-item text-body active" aria-current="page"><Link to ="/Addexam" className="btn btn-primary px-2 mx-2 d-none d-lg-flex">Add Exam</Link></li>
+            {localStorage.getItem('role') ==='admin' || localStorage.getItem('role') === 'faculty'?
+            <li className="breadcrumb-item text-body active" aria-current="page"><Link to ="/Addexam" className="btn btn-primary px-2 mx-2 d-none d-lg-flex">Add Exam</Link></li>:""}
           </ol>
         </nav>
 
