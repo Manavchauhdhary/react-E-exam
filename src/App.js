@@ -23,6 +23,7 @@ import { Questions } from './components/Questions';
 import { ResetPassword } from './components/ResetPassword';
 import { ResetPasswordButton } from './components/ResetPasswordButton';
 import { UserProfile } from './components/UserProfile';
+import { ViewOneExam } from './components/ViewOneExam';
 
 
   export const UserContext = createContext()
@@ -59,6 +60,7 @@ function App() {
          <Route path='/ResetPasswordButton' element={<ResetPasswordButton/>}/>
          <Route path='/reset/:token' element={<ResetPassword/>}/>
          <Route path='/profile/:userId' element={<UserProfile/>}/>
+         <Route path='/exam/:examId' element={<ViewOneExam/>}></Route>
          
          <Route path='/Update' element={<UpdateExam/>}/>
          <Route path='/course/:courseId/exams' element={<ExamsOfCourse/>}/>

@@ -7,7 +7,7 @@ export const Exams = () => {
   return (
     <div>
     <Headerexams/>
-    <Search/>
+    {/* <Search/> */}
     <Exams1/>
     
 

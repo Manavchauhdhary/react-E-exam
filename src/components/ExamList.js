@@ -16,7 +16,7 @@ export const ExamList = () => {
   </div> */}
   {/* Spinner End */}
     <Headerexamlist/>
-  <Search/>
+  {/* <Search/> */}
   <ExamList1/>
   
  

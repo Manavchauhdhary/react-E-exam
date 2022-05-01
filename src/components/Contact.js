@@ -25,7 +25,7 @@ export const Contact = () => {
     </div>
   </div>
   {/* Header End */}
-  <Search/>
+  {/* <Search/> */}
   {/* Contact Start */}
   <div className="container-xxl py-5">
     <div className="container">

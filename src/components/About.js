@@ -16,7 +16,7 @@ export const About = () => {
   {/* Spinner End */}
  
   <Headerabout/>
-  <Search/>
+  {/* <Search/> */}
   
   {/* About Start */}
   <div className="container-xxl py-5">

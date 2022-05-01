@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Search } from './Search'
+import { Spinner } from './Spinner';
 
 
 export const Exams1 = () => {
@@ -38,6 +39,7 @@ export const Exams1 = () => {
 
   return (
     <div>
+      <Spinner/>
  
   {/* Property List Start */}
   <div className="container-xxl py-5">
@@ -79,7 +81,7 @@ export const Exams1 = () => {
                 </div>
                 <div className="p-4 pb-0">
                   <h5 className="text-primary mb-3"></h5>
-                  <a className="d-block h5 mb-2" >{exam.examName}</a>
+                  <Link to={`/exam/${exam._id}`} className="d-block h5 mb-2" >{exam.examName}</Link>
                   <p><i className="fa fa-question text-primary me-2" />{exam.totalQuestion} Total Question</p>
                 </div>
                 <div className="d-flex border-top">
