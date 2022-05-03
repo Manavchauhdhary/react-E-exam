@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link,NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -51,18 +51,18 @@ export const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <div className="navbar-nav ms-auto">
           
-            <Link to="/" className="nav-item nav-link active">
+            <NavLink to="/" activeClassName="nav-item nav-link active" className="nav-item nav-link active">
               Home
-            </Link>
-            <Link to="/about" className="nav-item nav-link">
+            </NavLink>
+            <NavLink to="/about" activeClassName="nav-item nav-link active" className="nav-item nav-link">
               About
-            </Link>
-            <Link to="/ExamList" className="nav-item nav-link">
+            </NavLink>
+            <NavLink to="/ExamList" activeClassName="nav-item nav-link active" className="nav-item nav-link">
               Course List
-            </Link>
-            <Link to="/Exams" className="nav-item nav-link">
+            </NavLink>
+            <NavLink to="/Exams" activeClassName="nav-item nav-link active" className="nav-item nav-link">
               Exams
-            </Link>
+            </NavLink>
             {/* <Link to="/Addexam" className="nav-item nav-link">Add Exam</Link> */}
 
             {/* <div className="nav-item dropdown">
@@ -73,7 +73,7 @@ export const Navbar = () => {
           <a href="property-agent.html" className="dropdown-item">Property Agent</a>
         </div>
       </div> */}
-            <div className="nav-item dropdown">
+            {/* <div className="nav-item dropdown">
               <a
                 href="#"
                 className="nav-link dropdown-toggle"
@@ -89,10 +89,10 @@ export const Navbar = () => {
                   404 Error
                 </a>
               </div>
-            </div>
-            <Link to="/Contact" className="nav-item nav-link">
+            </div> */}
+            <NavLink to="/Contact" activeClassName="nav-item nav-link active" className="nav-item nav-link">
               Contact
-            </Link>
+            </NavLink>
           </div>
           {localStorage.getItem("email") == null ? (
             <>

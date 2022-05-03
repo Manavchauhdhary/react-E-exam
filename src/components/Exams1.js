@@ -82,6 +82,7 @@ export const Exams1 = () => {
                 <div className="p-4 pb-0">
                   <h5 className="text-primary mb-3"></h5>
                   <Link to={`/exam/${exam._id}`} className="d-block h5 mb-2" >{exam.examName}</Link>
+                  <h6 className="text-primary mb-3">{exam.totalMarks} Marks</h6>
                   <p><i className="fa fa-question text-primary me-2" />{exam.totalQuestion} Total Question</p>
                 </div>
                 <div className="d-flex border-top">

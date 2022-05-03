@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 export const UserProfile = () => {
     var userId = useParams().userId;
     const [userDetail, setuserDetail] = useState([])
+    const [resultList, setresultList] = useState([])
     const getUserDetail = () =>{
         axios.get(`http://localhost:3000/users/${userId}`).then(res=>{
             console.log(res.data.data)
@@ -14,8 +15,18 @@ export const UserProfile = () => {
         })
     }
 
+    const getResultsOfUser = () => {
+      axios.get(`http://localhost:3000/results/${userId}`).then(res => {
+        console.log(res.data.data)
+        setresultList(res.data.data)
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+
     useEffect(() => {
       getUserDetail()
+      getResultsOfUser();
     }, [])
     
   return (
@@ -46,7 +57,7 @@ export const UserProfile = () => {
             </div> */}
           </div>
         </div>
-        {/* <div className="card mb-4 mb-lg-0">
+         <div className="card mb-4 mb-lg-0">
           <div className="card-body p-0">
             <ul className="list-group list-group-flush rounded-3">
               <li className="list-group-item d-flex justify-content-between align-items-center p-3">
@@ -71,7 +82,7 @@ export const UserProfile = () => {
               </li>
             </ul>
           </div>
-        </div> */}
+        </div> 
       </div>
       <div className="col-lg-8">
         <div className="card mb-4">
@@ -122,7 +133,7 @@ export const UserProfile = () => {
             </div>
           </div>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-md-6">
             <div className="card mb-4 mb-md-0">
               <div className="card-body">
@@ -149,8 +160,8 @@ export const UserProfile = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-6">
+          </div> */}
+          {/* <div className="col-md-6">
             <div className="card mb-4 mb-md-0">
               <div className="card-body">
                 <p className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</p>
@@ -176,11 +187,43 @@ export const UserProfile = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+          <div className="row">
+              <div className="col-md-12">
+                <div className="card mb-12 mb-md-0">
+                  <div className="card-body">
+                    <p className="mb-12"><span className="text-primary font-italic me-1">Results</span> Project Status</p>
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Exam Title</th>
+                          <th scope="col">Subject</th>
+                          <th scope="col">Total Marks</th>
+                          <th scope="col">Your Marks</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {resultList.map(result => {
+                          return (
+                            <tr>
+                              <th scope="row">{result.exam.examName}</th>
+                              <td>{result.exam.course.courseName}</td>
+                              <td>{result.exam.totalMarks}</td>
+                              <td>{result.marks}</td>
+                              {/* <td>@mdo</td> */}
+                            </tr>
+                          )
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
-  </div>
+  {/* </div> */}
 </section>
 
   )

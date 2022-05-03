@@ -144,6 +144,12 @@ export const Signup = () => {
                   <label className="form-label" htmlFor="form3Example9">DOB</label>
                 </div>
                 <div className="form-outline mb-4">
+                  <input type="text" id="form3Example97" className="form-control form-control-lg"onChange={(e) => setemail(e.target.value)} />
+                  <label className="form-label" htmlFor="form3Example97">Email ID</label>
+                  {email.includes('@') ? "" : "Enter Correct Email ID"}
+                  
+                </div>
+                <div className="form-outline mb-4">
                   <input type="tel"  id="form3Example90"  className="form-control form-control-lg" onChange={(e) => setmobileNumber(e.target.value)}/>
                   <label className="form-label" htmlFor="form3Example90">PhoneNo</label>
                   {mobileNumber.length <11 ? null:'not more than 10 char' }
@@ -152,25 +158,24 @@ export const Signup = () => {
                 <div className="form-outline mb-4">
                   <input type="password" id="form3Example90"  className="form-control form-control-lg" onChange={(e) => setpassword(e.target.value)} />
                   <label className="form-label" htmlFor="form3Example90">Password</label>
+                  {password.includes('@') || password.includes('#') || password.includes('$') || password.includes('%') || password.includes('^') || password.includes('*') ? "" : "Password Must Have A Special Character"}
+                                                    <br />{/\d/.test(password) ? "" : "Password Must Have A Number"}
+                                                    <br />{/[a-zA-Z]/.test(password) ? "" : "Password Must Have A Alphabet"}
                  
                   
                 </div>
-                <div className="form-outline mb-4">
+                {/* <div className="form-outline mb-4">
                   <input type="password" id="form3Example90" className="form-control form-control-lg" onChange={(e) => setrepassword(e.target.value)} />
                   <label className="form-label" htmlFor="form3Example90">re-password</label>
                   
-                </div>
+                </div> */}
                 <div className="form-outline mb-4">
                   <input type="text" id="form3Example99" className="form-control form-control-lg" onChange={(e) => seteducation (e.target.value)}/>
                   <label className="form-label" htmlFor="form3Example99">Education</label>
                 </div>
-                <div className="form-outline mb-4">
-                  <input type="text" id="form3Example97" className="form-control form-control-lg"onChange={(e) => setemail(e.target.value)} />
-                  <label className="form-label" htmlFor="form3Example97">Email ID</label>
-                  
-                </div>
+               
                 <div className="d-flex justify-content-end pt-3">
-                  <button type="button" className="btn btn-light btn-lg">Reset all</button>
+                  {/* <button type="button" className="btn btn-light btn-lg">Reset all</button> */}
                   <button type="submit" className="btn btn-warning btn-lg ms-2">Submit form</button>
                   
                 </div>

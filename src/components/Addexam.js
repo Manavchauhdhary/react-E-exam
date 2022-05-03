@@ -11,6 +11,8 @@ export const Addexam = () => {
    const [status, setstatus] = useState("")
    const [subject, setsubject] = useState('')
    const [Course, setCourse] = useState([])
+   const [examTime, setexamTime] = useState('')
+   const [totalMarks, settotalMarks] = useState('')
    const [author, setAuthor] = useState(localStorage.getItem('userId'))
 
    var navigate = useNavigate()
@@ -39,7 +41,9 @@ export const Addexam = () => {
      totalQuestion: totalque,
      isActive: status,
      course: subject,
-     author:author
+     author:author,
+     examTime:examTime,
+     totalMarks:totalMarks
     }
     axios.post("http://localhost:3000/exams", data).then((res) => {
   //  alert("data add sucssesfully");
@@ -85,6 +89,22 @@ export const Addexam = () => {
                       <label className="form-label" htmlFor="form3Example3c">Total Question</label>
                     </div>
                   </div>
+                  <div className="d-flex flex-row align-items-center mb-4">
+                        <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div className="form-outline flex-fill mb-0">
+                        <input type="number" name="totalMarks" id="totalMarks" onChange={(e) => settotalMarks(e.target.value) } className="form-control" />
+                        <label className="form-label" htmlFor="totalMarks">Total Marks</label>
+                   </div>
+                      </div>
+
+                         <div className="d-flex flex-row align-items-center mb-4">
+                          <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                           <div className="form-outline flex-fill mb-0">
+                            <input type="number" name="examTime" id="examTime" onChange={(e) => setexamTime(e.target.value) } className="form-control" />
+                            <label className="form-label" htmlFor="examTime">Total Time In Minutes</label>
+                           </div>
+                      </div>
+                  
                   <div className="d-flex flex-row align-items-center mb-4">
                     <i className="fas fa-lock fa-lg me-3 fa-fw" />
                     <div className="form-outline flex-fill mb-0">
