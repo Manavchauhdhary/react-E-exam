@@ -27,6 +27,7 @@ import { ViewOneExam } from './components/ViewOneExam';
 import { StartExam } from './components/StartExam';
 import { AddQuestionsToExam } from './components/AddQuestionsToExam';
 import { ViewQuestionsOfExam } from './components/ViewQuestionOfExam';
+import { UpdateQuestion } from './components/UpdateQuestion';
 
 
   export const UserContext = createContext()
@@ -66,10 +67,11 @@ function App() {
          <Route path='/reset/:token' element={<ResetPassword/>}/>
          <Route path='/profile/:userId' element={<UserProfile/>}/>
          <Route path='/exam/:examId' element={<ViewOneExam/>}></Route>
-         <Route  path='/exam/:examId/:questions' element={<AddQuestionsToExam/>}></Route>
-         <Route path='/exam/:examId/:userId' element={<StartExam/>}></Route>
+         <Route  path='/exam/:examId/questions' element={<AddQuestionsToExam/>}></Route>
+         <Route path='/exam/:examId/user/:userId' element={<StartExam/>}></Route>
          <Route path='/Update' element={<UpdateExam/>}/>
          <Route path='/course/:courseId/exams' element={<ExamsOfCourse/>}/>
+         <Route path='/exam/:examId/question/:questionId' element={<UpdateQuestion/>}></Route>
          
 
        </Routes>

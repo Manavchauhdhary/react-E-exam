@@ -48,7 +48,7 @@ export const Header = () => {
     </div>
   </div>
   {/* About End */}
- <Exams1/>
+ {/* <Exams1/> */}
 
 
     </>

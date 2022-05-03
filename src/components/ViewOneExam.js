@@ -15,7 +15,7 @@ export const ViewOneExam = () => {
         axios.get(`http://localhost:3000/exams/${examId}`).then(res => {
             console.log(res.data.data)
             setexam(res.data.data)
-            setauthorId(res.data.data.author._id)
+            setauthorId(res.data.data.author)
         }).catch(err => {
             console.log(err)
         })
@@ -68,7 +68,7 @@ export const ViewOneExam = () => {
                                </h6>
                     </div>
                     <div className='col-lg-7 text-start text-lg-end wow slideInRight'>
-                    <Link className='btn btn-primary' to={`/exam/${examId}/${userId}`}>Start Exam</Link>
+                    <Link className='btn btn-primary' to={`/exam/${examId}/user/${userId}`}>Start Exam</Link>
                     </div>
                 </div>
 

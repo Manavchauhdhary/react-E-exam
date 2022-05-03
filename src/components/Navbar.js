@@ -24,22 +24,22 @@ export const Navbar = () => {
   return (
     <div className="container-fluid nav-bar bg-transparent">
       <nav className="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
-        <a
-          href="index.html"
+        <Link
+          to="/"
           className="navbar-brand d-flex align-items-center text-center"
         >
           <div className="icon p-2 me-2">
             <img
               className="img-fluid"
-              src="../img/exam.png"
+              src="/img/exam.png"
               alt="Icon"
               style={{ width: 30, height: 30 }}
             />
           </div>
-          <h1 className="m-0 text-primary"><Link to="/" className="nav-item nav-link active">
+          <h1 className="m-0 text-primary">
               E-exam
-            </Link></h1>
-        </a>
+            </h1>
+        </Link>
         <button
           type="button"
           className="navbar-toggler"
@@ -51,7 +51,7 @@ export const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <div className="navbar-nav ms-auto">
           
-            <NavLink to="/" activeClassName="nav-item nav-link active" className="nav-item nav-link active">
+            <NavLink to="/" activeClassName="nav-item nav-link active" className="nav-item nav-link">
               Home
             </NavLink>
             <NavLink to="/about" activeClassName="nav-item nav-link active" className="nav-item nav-link">

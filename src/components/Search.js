@@ -90,10 +90,10 @@ export const Search = () => {
        <div className="container">
            <div className="row g-0 gx-5 align-items-end">
                <div className="col-lg-6">
-                   {/* <div className="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
-                       <h1 className="mb-3">Exams</h1>
-                       <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit diam justo sed rebum.</p>
-                   </div> */}
+               <div className="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
+            <h1 className="mb-3">ALL course exam</h1>
+            <p>Select the particuler course exam and give the exam and evaluate your self .</p>
+          </div>
                </div>
                <div className="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                </div>
@@ -109,27 +109,27 @@ export const Search = () => {
                                else if(exam.examName.toLowerCase().includes(examName.toLowerCase())){
                                    return exam;
                                }
-                           }).map((exam => {
+                           }).slice(-3).map((exam => {
                                return (
                                    <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s" key={exam._id}>
                                    <div className="property-item rounded overflow-hidden">
                                        <div className="position-relative overflow-hidden">
                                            <Link to={`/exam/${exam._id}`}><img className="img-fluid" src='img/exam_image.jpg' alt="" /></Link>
-                                           <div className="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">{exam.examName}</div>
-                                           {/* <div className="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">{exam.totalMarks}</div> */}
+                                           {/* <div className="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">{exam.examName}</div> */}
+                                           <div className="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3 ">{exam.course.courseName}</div>
                                        </div>
                                        <div className="p-4 pb-0">
-                                           <Link className="d-block h5 mb-2" to={`/exam/${exam._id}`}>{exam.examName}</Link>
-                                           {/* <h6 className="text-primary mb-3">{exam.totalMarks} Marks</h6> */}
-                                           <p><i className="fa fa-question text-primary me-2" />{exam.totalQuestion} Total Question</p>
-                                           {/* {localStorage.getItem('userId')} */}
-                                       </div>
+                                         <h5 className="text-primary mb-3"></h5>
+                                         <Link to={`/exam/${exam._id}`} className="d-block h5 mb-2" >{exam.examName}</Link>
+                                         <h6 className="text-primary mb-3">{exam.totalMarks} Marks</h6>
+                                         <p><i className="fa fa-question text-primary me-2" />{exam.totalQuestion} Total Question</p>
+                                        </div>
                                        <div className="d-flex border-top">
                                           {/* {exam.author._id} */}
                                           
-                                           {localStorage.getItem('userId')=== exam.author._id || localStorage.getItem('role') === 'Admin' ?<>
-                                           <small className="flex-fill text-center border-end py-2"><i className="fa fa-edit text-primary me-2"></i><Link to={`/exams/${exam._id}`}>Update Exam</Link></small>
-                                           <small className="flex-fill text-center py-2"><i className="fa fa-trash text-primary me-2"></i><Link to='/exams' onClick={(e) => { deleteExam(exam._id) }}>Delete Exam</Link></small></>:""}
+                                          {localStorage.getItem('userId') === exam.author || localStorage.getItem('role') === 'admin'?<>
+                  <small className="flex-fill text-center border-end py-2"><i className="fa fa-edit text-primary me-2"/><Link to={`/exams/${exam._id}`}>Update exam</Link></small>
+                  <small className="flex-fill text-center py-2"><i className="fas fa-trash text-primary me-2" /><Link to='/Exams' onClick={(e)=>{deleteExam(exam._id)}}>Delete Exam</Link></small> </>: ""}
                                            <ToastContainer
                                                position="bottom-right"
                                                autoClose={5000}
@@ -147,9 +147,9 @@ export const Search = () => {
                                )
                            }))
                        }
-                       {/* <div className="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                           <a className="btn btn-primary py-3 px-5" href="/#">Browse More Exams</a>
-                       </div> */}
+                        <div className="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                           <Link className="btn btn-primary py-3 px-5" to="/Exams">Browse More Exams</Link>
+                       </div>
                    </div>
                </div>
            </div>

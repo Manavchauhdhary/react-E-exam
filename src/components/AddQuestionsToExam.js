@@ -34,7 +34,7 @@ export const AddQuestionsToExam = () => {
             marks:marks
         }
         e.preventDefault()
-        axios.post(`http://localhost:3000/exams/${examId}/questions`, question).then(res => {
+        axios.post(`http://localhost:3000/ques/${examId}/questions`, question).then(res => {
             console.log(res.data.data)
             navigate(`/exams/${examId}/questions`)
         }).catch(err => {

@@ -20,8 +20,10 @@ export const ViewQuestionsOfExam = () => {
         })
     }
 
-    const deleteQuestion = (qId) => {
-        axios.delete(`http://localhost:3000/exams/${examId}/questions/${qId}`).then(res=>{
+
+
+    const deleteQuestion = (queId) => {
+        axios.delete(`http://localhost:3000/ques/${examId}/questions/${queId}`).then(res=>{
             console.log(res.data.data)
         }).catch(err=>{
             console.log(err)
@@ -78,7 +80,7 @@ export const ViewQuestionsOfExam = () => {
                                 return (
                                     <tr key={question._id}>
                                         <th scope="row">{index+1}</th>
-                                        <td>{question.questionName}</td>
+                                        <td>{question.queName}</td>
                                         <td>{question.option1}</td>
                                         <td>{question.option2}</td>
                                         <td>{question.option3}</td>

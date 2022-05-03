@@ -86,7 +86,7 @@ export const StartExam = () => {
 
 
     const getOneExam = () => {
-        axios.get(`http://localhost:8080/exams/${examId}`).then(res => {
+        axios.get(`http://localhost:3000/exams/${examId}`).then(res => {
             console.log(res.data.data)
             setexam(res.data.data)
             setquestions(res.data.data.questions)
@@ -141,7 +141,7 @@ export const StartExam = () => {
             exam: examId,
             marks: score
         }
-        axios.post('http://localhost:8080/results', data).then(res => {
+        axios.post('http://localhost:3000/results', data).then(res => {
             console.log(res.data.data)
         }).catch(err => {
             console.log(err)
@@ -182,7 +182,7 @@ export const StartExam = () => {
                                             <div className='row' key={questions[currentQuestion]._id}>
                                                 <h6 className='col-6'>Question {currentQuestion + 1}.</h6>
                                                 <h6 className='text-center col-3'>{questions[currentQuestion].marks} Marks</h6>
-                                                <h6>{questions[currentQuestion].questionName}</h6>
+                                                <h6>{questions[currentQuestion].queName}</h6>
                                             </div>
 
                                         </div>
